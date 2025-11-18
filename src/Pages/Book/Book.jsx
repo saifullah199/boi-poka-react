@@ -1,31 +1,42 @@
-import React from 'react';
+import { IoStarHalf } from "react-icons/io5";
+import { Link } from "react-router";
 
 const Book = ({book}) => {
 
-    const {author,bookName,image
+    const {bookName,image, rating, category,tags, yearOfPublishing
+,publisher,bookId
 } =book
     console.log(book)
     return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
-                <figure>
+       <Link to={`/bookDetails/${bookId}`}>
+         <div>
+            <div className="card bg-base-100 w-96 shadow-sm p-6">
+                <figure className='p-4 bg-gray-100 w-2/3 mx-auto'>
                     <img
+                    className='h-[166px]'
                     src={image}
                     alt="Shoes" />
                 </figure>
                 <div className="card-body">
+                    <div className="flex justify-center gap-10">
+                        {
+                            tags.map((tag, index) => <button key={index}>{tag}</button>)
+                        }
+                    </div>
                     <h2 className="card-title">
-                    Card Title
-                    <div className="badge badge-secondary">NEW</div>
+                    {bookName}
+                    <div className="badge badge-secondary">{yearOfPublishing}</div>
                     </h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                    <p> Book By : {publisher}</p>
+                    <div className="border-t-2 border-dashed"></div>
                     <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                    <div className="badge badge-outline">{category}</div>
+                    <div className="badge badge-outline">{rating} <IoStarHalf /></div>
                     </div>
                 </div>
             </div>
         </div>
+       </Link>
     );
 };
 
