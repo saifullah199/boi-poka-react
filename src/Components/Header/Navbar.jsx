@@ -10,6 +10,9 @@ const Navbar = () => {
         <Link to="/about">
             <li className='m-2'>About</li>
         </Link>
+        <Link to="/readlist">
+            <li className='m-2'>ReadList</li>
+        </Link>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
